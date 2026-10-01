@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Transformer risk models for acute liver failure on MIMIC-IV"
+abstract: >-
+  Reference implementation of FT-Transformer and Hybrid Transformer models for
+  in-hospital mortality prediction in acute liver failure, with a common
+  statistical evaluation framework covering discrimination, calibration,
+  decision curve analysis, non-linearity testing and reproducibility.
+version: 0.1.0
+date-released: "2026-01-01"
+license: MIT
+type: software
+keywords:
+  - acute liver failure
+  - MIMIC-IV
+  - transformer
+  - clinical prediction model
+  - calibration
+  - decision curve analysis
+authors:
+  - name: "The authors"
+repository-code: "https://github.com/<your-account>/alf-transformer-mimic"

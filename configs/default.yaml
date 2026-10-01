@@ -1,0 +1,74 @@
+# Default configuration for the ALF Transformer pipeline.
+
+data:
+  cohort: data/cohort.csv                 # one row per ICU stay, imputed
+  trajectory: data/trajectory_panel.csv   # wide daily panel, keyed by stay_id
+  outcome: outcome                        # 0 = survived, 1 = in-hospital death
+  n_days: 7
+
+features:
+  numeric:
+    - Age
+    - MAP
+    - SpO2
+    - Hemoglobin
+    - Platelet
+    - WBC
+    - Albumin
+    - BUN
+    - Chloride
+    - Creatinine
+    - Sodium
+    - ALT
+    - AST
+    - Total_bilirubin
+    - PT
+    - APTT
+    - INR
+    - Lactate
+    - MELD
+    - SOFA
+  binary:
+    - Alcoholic_only
+    - Alcoholic_plus_viral
+    - Viral_only
+    - Other
+    - Ascites
+    - Sepsis
+    - HE
+    - HRS
+    - EVB
+    - SBP
+    - Shock
+    - Pneumonia
+    - Liver_transplantation
+    - Vasopressin
+    - rrt
+  trajectory:
+    - bilirubin
+    - inr
+    - creatinine
+    - platelet
+
+model:
+  d_model: 48
+  n_heads: 4
+  n_layers: 2
+  ffn: 128
+  dropout: 0.15
+
+training:
+  n_folds: 5
+  inner_frac: 0.15      # inner split for early stopping; the outer fold stays untouched
+  seeds: [42, 7, 2024]
+  epochs: 60
+  batch_size: 128
+  lr: 0.001
+  weight_decay: 0.0001
+  patience: 12
+  grad_clip: 5.0
+
+evaluation:
+  n_boot: 1000
+  hl_groups: 10
+  dca_thresholds: [0.2, 0.3, 0.4]

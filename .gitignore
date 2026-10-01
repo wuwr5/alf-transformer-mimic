@@ -1,0 +1,49 @@
+# ---- data: never commit MIMIC-IV derived files ----
+data/
+*.csv
+*.csv.gz
+*.parquet
+*.rds
+*.feather
+!docs/**/*.csv
+
+# ---- model artefacts ----
+*.pt
+*.pth
+*.ckpt
+*.onnx
+checkpoints/
+outputs/
+runs/
+
+# ---- python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# ---- R ----
+.Rhistory
+.RData
+.Rproj.user/
+
+# ---- editors / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- secrets ----
+.env
+*.key
+
+# ---- test / build caches ----
+.pytest_cache/
+.ruff_cache/
