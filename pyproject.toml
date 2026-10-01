@@ -9,7 +9,7 @@ description = "Transformer risk models for acute liver failure on MIMIC-IV"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
-authors = [{ name = "The authors" }]
+authors = [{ name = "wuwr5" }]
 keywords = ["acute liver failure", "MIMIC-IV", "transformer", "clinical prediction"]
 classifiers = [
     "License :: OSI Approved :: MIT License",
@@ -32,7 +32,7 @@ dependencies = [
 dev = ["pytest>=7.4", "ruff>=0.4"]
 
 [project.urls]
-Homepage = "https://github.com/<your-account>/alf-transformer-mimic"
+Homepage = "https://github.com/wuwr5/alf-transformer-mimic"
 
 [tool.setuptools.packages.find]
 where = ["src"]
