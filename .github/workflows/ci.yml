@@ -25,12 +25,12 @@ jobs:
       - name: Install (CPU-only PyTorch)
         run: |
           python -m pip install --upgrade pip
-          pip install torch --index-url https://download.pytorch.org/whl/cpu
-          pip install -r requirements.txt
-          pip install -e .
+          python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r requirements.txt
+          python -m pip install -e ".[dev]"
 
       - name: Unit tests
-        run: pytest tests/ -q
+        run: python -m pytest tests/ -q
 
       - name: Import check
         run: python -c "import alf_transformer; print(alf_transformer.__version__)"
