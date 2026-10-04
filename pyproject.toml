@@ -9,7 +9,8 @@ description = "Transformer risk models for acute liver failure on MIMIC-IV"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
-authors = [{ name = "wuwr5" }]
+authors = [{ name = "Weirong Wu" }]
+maintainers = [{ name = "Weirong Wu" }]
 keywords = ["acute liver failure", "MIMIC-IV", "transformer", "clinical prediction"]
 classifiers = [
     "License :: OSI Approved :: MIT License",
@@ -30,9 +31,11 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=7.4", "ruff>=0.4"]
+# duckdb is only needed by scripts/01_build_cohort.py, not by the library itself
+pipeline = ["duckdb>=0.10"]
 
 [project.urls]
-Homepage = "https://github.com/wuwr5/alf-transformer-mimic"
+Homepage = "https://github.com/wuwr5/alf-transformer-mimic-v2"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -12,8 +12,11 @@ dependencies:
   - statsmodels>=0.14
   - matplotlib>=3.8
   - openpyxl>=3.1
+  - duckdb>=0.10         # scripts/01_build_cohort.py only
   - pytorch>=2.2
   - cpuonly              # drop this line if you have a CUDA-capable GPU
   - pip
   - pip:
       - -e .
+# Note: step 2 of the pipeline (scripts/02_impute.R) is R code and needs
+# R >= 4.2 with install.packages("mice"); it is not provided by this environment.

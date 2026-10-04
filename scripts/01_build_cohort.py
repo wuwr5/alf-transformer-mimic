@@ -6,11 +6,14 @@ Reads the gzipped MIMIC-IV CSVs directly with DuckDB, so no database import is
 required. Concept tables (SOFA, MELD, first-day laboratory summaries) are taken
 from the official `mimic-code` DuckDB concepts where available.
 
+The ``--db`` database must already contain the ``mimiciv_derived`` concepts from
+``mimic-code``; this script does not build them. See ``docs/DATA.md``.
+
 Example
 -------
     python scripts/01_build_cohort.py \
         --mimic-root /path/to/mimic-iv-2.2 \
-        --concepts /path/to/mimic-code/mimic-iv/concepts_duckdb \
+        --db mimic_alf.duckdb \
         --out data/
 """
 from __future__ import annotations

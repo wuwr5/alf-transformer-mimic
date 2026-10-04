@@ -11,6 +11,9 @@ MIMIC-IV is distributed by the MIT Laboratory for Computational Physiology.
 2. Request access to [MIMIC-IV v2.2](https://physionet.org/content/mimiciv/2.2/).
 3. Sign the data use agreement and download the `hosp`, `icu` and `note` modules.
 
+Access for the analysis reported in this repository was granted under PhysioNet
+credentialed access, **record ID 12801113**.
+
 The data use agreement forbids redistribution, so derived tables must not be
 committed either.
 
@@ -37,7 +40,28 @@ committed either.
     └── discharge.csv.gz
 ```
 
-## 3. Cohort definition
+## 3. Derived concept tables (`mimic-code`)
+
+`scripts/01_build_cohort.py` reads the raw CSVs directly with DuckDB, but it
+does **not** recompute the derived concepts. It expects the `mimiciv_derived`
+schema to already exist in the DuckDB file passed to `--db`.
+
+Required concepts:
+
+`icustay_detail`, `first_day_lab`, `first_day_vitalsign`, `first_day_sofa`,
+`first_day_rrt`, `meld`, `enzyme`, `coagulation`, `chemistry`,
+`complete_blood_count`.
+
+```bash
+git clone https://github.com/MIT-LCP/mimic-code.git
+# then run the concept SQL in mimic-code/mimic-iv/concepts_duckdb against the
+# database you will pass to --db; 01_build_cohort.py names any concept it cannot find
+```
+
+`duckdb` is not installed by `environment.yml` alone — install it with
+`pip install -e ".[pipeline]"`.
+
+## 4. Cohort definition
 
 Patients are selected by ICD-9 and ICD-10 codes for liver failure:
 
@@ -60,7 +84,7 @@ Exclusions, applied in order:
    admission is retained;
 3. ICU stays shorter than 24 hours.
 
-## 4. Derived tables produced by `scripts/01_build_cohort.py`
+## 5. Derived tables produced by `scripts/01_build_cohort.py`
 
 ### `cohort.csv`
 
@@ -79,7 +103,7 @@ represented to the model through missingness-indicator tokens.
 Coverage in the development cohort: 2,330 of 2,508 ICU stays (92.9%) had at
 least one trajectory value.
 
-## 5. Missing data
+## 6. Missing data
 
 `scripts/02_impute.R` performs multiple imputation by chained equations with
 predictive mean matching (`mice`, `m = 20`, `maxit = 20`, `method = "pmm"`).

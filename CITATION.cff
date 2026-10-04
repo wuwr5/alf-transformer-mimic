@@ -7,7 +7,7 @@ abstract: >-
   statistical evaluation framework covering discrimination, calibration,
   decision curve analysis, non-linearity testing and reproducibility.
 version: 0.1.0
-date-released: "2026-01-01"
+date-released: "2026-10-04"
 license: MIT
 type: software
 keywords:
@@ -18,5 +18,8 @@ keywords:
   - calibration
   - decision curve analysis
 authors:
-  - name: "wuwr5"
-repository-code: "https://github.com/wuwr5/alf-transformer-mimic"
+  - given-names: "Weirong"
+    family-names: "Wu"
+    affiliation: "928th Hospital of PLA Joint Logistics Support Force"
+    orcid: "https://orcid.org/0000-0001-8733-967X"
+repository-code: "https://github.com/wuwr5/alf-transformer-mimic-v2"
