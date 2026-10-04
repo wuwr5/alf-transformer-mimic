@@ -197,7 +197,7 @@ therefore excluded from the imputation model. See [`docs/METHODS.md`](docs/METHO
   title  = {Transformer risk models for acute liver failure on MIMIC-IV},
   year   = {2026},
   note   = {Reference implementation. 928th Hospital of PLA Joint Logistics Support Force},
-  url    = {https://github.com/wuwr5/alf-transformer-mimic-v2}
+  url    = {https://github.com/wuwr5/alf-transformer-mimic}
 }
 ```
 
